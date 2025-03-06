@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<style>
+    body {
+        font-family: sans-serif;
+        padding: 1rem;
+        background-color: white;
+    }
+
+    .view-results {
+        padding: 1rem;
+        cursor: pointer;
+        font-size: inherit;
+        color: white;
+        background: teal;
+        border-radius: 8px;
+        margin-right: 5px;
+    }
+    .my-results {
+        padding: 1rem;
+        border: 1px solid goldenrod;
+    }    
+</style>
+<script>
+    var answers = ["C", "D", "B"],
+    tot = answers.length;
+function getCheckedValue(radioName) {
+    var radios = document.getElementsByName(radioName);
+    for (var y = 0; y < radios.length; y++)
+        if (radios[y].checked) return radios[y].value;
+}
+function getScore() {
+    var score = 0;
+    for (var i = 0; i < tot; i++)
+        if (getCheckedValue("question" + i) === answers[i]) score += 1;
+    return score;
+}
+function returnScore() {
+    document.getElementById("myresults").innerHTML =
+        "Your score is " + getScore() + "/" + tot;
+    if (getScore() > 2) {
+        console.log("Bravo");
+    }
+}
+</script>
+<audio src = "el.mp3" id = "Audio"></audio>
+    </head>
+    <body>
+        <script>
+            function MyVideo(){
+            document.getElementById("Video").play();   
+          }
+          function MyVideoP(){
+            document.getElementById("Video").pause();   
+          } 
+            function MyAudio(){
+            document.getElementById("Audio").play();   
+          }  
+        </script>
+
+        <center>
+            <h1>Multiple Choice Questions B2C2</h1><br>
+            <table border="1" width="650">
+            <tr align="center">
+            <td>
+                <video src="sheep.mp4" width="320" id="Video"></video><br>
+                <button onClick = "MyVideo()" >Play</button>
+                <button onClick = "MyVideoP()" >Pause</button><br>
+                <h4>1. How many cars in the video?</h4>
+            </td>
+            <td align="left">
+            A<input type="radio" name="question0" value="A">
+            <span>6</span><br>
+            B<input type="radio" name="question0" value="B" />
+            <span>7</span><br>
+            C<input type="radio" name="question0" value="C" />
+            <span>8</span><br>
+            D<input type="radio" name="question0" value="D" />
+            <span>9</span>
+            </td>
+            </tr>
+            <tr align="center">
+            <td><h4>2. Listen then tell us what kind of animal is that.</h4>
+            <br><span><button onClick ="MyAudio()">Play</button></td>
+            <td align="left">
+            A<input type="radio" name="question1" value="A">
+            <span>Rabbit</span><br>
+            B<input type="radio" name="question1" value="B" />
+            <span>Pig</span><br>
+            C<input type="radio" name="question1" value="C" />
+            <span>Lion</span><br>
+            D<input type="radio" name="question1" value="D" />
+            <span>Elephant</span>
+            </td>
+            </tr>
+            <tr align="center">
+            <td><h4>3. We usually eat this on ...</h4><br><img src='festival.gif' width="300"></td>
+            <td align="left">
+            A<input type="radio" name="question2" value="A">
+            <span>Loong Boat Festival</span><br>
+            B<input type="radio" name="question2" value="B">
+            <span>Lantern Festival</span><br>
+            C<input type="radio" name="question2" value="C">
+            <span>Christmas</span><br>
+            D<input type="radio" name="question2" value="D">
+            <span>Mid- Autumn Festival</span>
+            </td>
+            </tr>
+            </table>
+        <br>
+        <button class="view-results" onclick="returnScore()">View Results</button>
+        <span id="myresults" class="my-results">My results will appear here</span>
+    </center>
+    </body>
+</html>
